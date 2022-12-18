@@ -12,7 +12,10 @@ public class Chapter1 {
 //		exercise_1_1_5();
 //		exercise_1_1_11();
 //		exercise_1_1_13();
-		exercise_1_1_14();
+//		exercise_1_1_14();
+//		exercise_1_1_16();
+//		exercise_1_1_18();
+		exercise_1_1_19();
 	}
 	
 	public static void exercise_1_1_3() {
@@ -101,6 +104,39 @@ public class Chapter1 {
 		}
 		
 		return result;
+	}	
+	
+	public static void exercise_1_1_16() {
+		StdOut.println(exR1(6));
+	}
+	
+	public static String exR1(int n) {
+		if (n <= 0) return "";
+		return exR1(n - 3) + n + exR1(n - 2) + n;
+	}
+	
+	public static void exercise_1_1_18() {
+		StdOut.println(mystery(2, 25));
+		StdOut.println(mystery(3, 11));
+	}
+	
+	public static int mystery(int a, int b) {
+		if (b == 0) return 1;
+		if (b % 2 == 0) return mystery(a * a, b / 2);
+		return mystery(a * a, b / 2) + 2;
+	}
+	
+	public static void exercise_1_1_19() {
+		//StdOut.println(10 + " " + fibonacci(10));
+		for (int N = 0; N < 100; N++) {
+			StdOut.println(N + " " + fibonacci(N));
+		}
+	}
+	
+	public static int fibonacci(int N) {
+		if (N == 0) return 0;
+		if (N == 1) return 1;
+		return fibonacci(N - 1) + fibonacci(N - 2);
 	}
 }
 

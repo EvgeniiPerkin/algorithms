@@ -21,7 +21,8 @@ public class Chapter1 {
 //		exercise_1_1_18();
 //		exercise_1_1_19();
 //		exercise_1_1_21();
-		exercise_1_1_22();
+//		exercise_1_1_22();
+		exercise_1_1_24();
 	}
 	
 	public static void exercise_1_1_3() {
@@ -196,6 +197,32 @@ public class Chapter1 {
 		} else { 
 			return mid;
 		}
+	}
+	
+	public static void exercise_1_1_24() {
+		Euclid();		
+	}
+	
+	public static void Euclid() {
+		while(true) {
+			StdOut.printf("Input 'number1' (exit-'-1'):");
+			int num1 = StdIn.readInt();
+			
+			if (num1 == -1) break;
+
+			StdOut.printf("Input 'number2':");
+			int num2 = StdIn.readInt();
+			
+			StdOut.printf("Greatest common divisor - %d.\n", gcd(num1, num2));
+		}
+	}
+	
+	public static int gcd(int p, int q) {
+		StdOut.printf("p - %-10d, q - %-10d\n", p, q);
+		
+		if (q == 0) return p;
+		int r = p % q;
+		return gcd(q, r);
 	}
 }
 

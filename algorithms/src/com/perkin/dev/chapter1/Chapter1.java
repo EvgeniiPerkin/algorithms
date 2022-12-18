@@ -1,9 +1,13 @@
 package com.perkin.dev.chapter1;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
+import edu.princeton.cs.algs4.StdDraw;
 import edu.princeton.cs.algs4.StdIn;
 import edu.princeton.cs.algs4.StdOut;
+import edu.princeton.cs.algs4.StdRandom;
 
 public class Chapter1 {
 
@@ -15,7 +19,9 @@ public class Chapter1 {
 //		exercise_1_1_14();
 //		exercise_1_1_16();
 //		exercise_1_1_18();
-		exercise_1_1_19();
+//		exercise_1_1_19();
+//		exercise_1_1_21();
+		exercise_1_1_22();
 	}
 	
 	public static void exercise_1_1_3() {
@@ -137,6 +143,59 @@ public class Chapter1 {
 		if (N == 0) return 0;
 		if (N == 1) return 1;
 		return fibonacci(N - 1) + fibonacci(N - 2);
+	}
+	
+	public static void exercise_1_1_21() {
+		List<String> lines = new ArrayList<>();
+		
+		while(true) {
+			StdOut.printf("Input string 'name number number' (exit-'x')");
+			String str = StdIn.readLine();
+			
+			if (str.equals("x")) break;
+			
+			lines.add(str);
+		}
+		
+		StdOut.printf("%-10s | %-10s | %-10s | %-10s\n", "name", "number one", "number two", "result");
+		StdOut.printf("%-10s | %-10s | %-10s | %-10s\n", "__________", "__________", "__________", "__________");
+		for(String s : lines) {
+			String[] a = s.split(" ");
+			StdOut.printf("%-10s | %-10s | %-10s | %.4f\n", a[0], a[1], a[2], Double.parseDouble(a[1]) / Double.parseDouble(a[2]));
+		}
+	}
+
+	public static void exercise_1_1_22() {
+		int n = 10000000;
+		int[] a;
+		a = new int[n];
+		for (int i = 0; i < n; i++) {
+			a[i] = i;
+		}
+		
+		StdOut.println(rank(9999999, a));
+	}
+
+	public static int rank(int key, int[] a) {
+		int i = 0;
+		return rank(key, a, 0, a.length -1, i);
+	}
+	public static int rank(int key, int[] a, int lo, int hi, int i) {
+		i++;
+		String format = "lo %-" + i + "d | hi %-" + i + "d |\n";
+		StdOut.printf(format, lo, hi);
+		
+		if (lo > hi) return -1;
+		
+		int mid = lo + (hi -lo) / 2;
+		
+		if (key < a[mid]) {
+			return rank(key, a, lo, mid -1, i);
+		} else if (key > a [mid]) {
+			return rank(key, a, mid + 1, hi, i);
+		} else { 
+			return mid;
+		}
 	}
 }
 

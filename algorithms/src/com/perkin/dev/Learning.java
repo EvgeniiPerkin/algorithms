@@ -9,6 +9,6 @@ public class Learning {
 		OtherAlgorithms other = new OtherAlgorithms();
 		other.Run();
 		
-		//Chapter1.run();
+		Chapter1.run();
 	}
 }

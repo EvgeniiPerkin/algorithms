@@ -20,7 +20,9 @@ public class Chapter1 {
 //		exercise_1_1_19();
 //		exercise_1_1_21();
 //		exercise_1_1_22();
-		exercise_1_1_24();
+//		exercise_1_1_24();
+//		exercise_1_1_27();
+		exercise_1_1_30();
 	}
 	
 	public static void exercise_1_1_3() {
@@ -216,12 +218,40 @@ public class Chapter1 {
 	}
 	
 	public static int gcd(int p, int q) {
-		StdOut.printf("p - %-10d, q - %-10d\n", p, q);
+		//StdOut.printf("p - %-10d, q - %-10d\n", p, q);
 		
 		if (q == 0) return p;
 		int r = p % q;
 		return gcd(q, r);
 	}
+	
+	public static void exercise_1_1_27() {
+		binomial(10, 5, 1.1);
+	}
+	//биномиальное распределение
+	public static double binomial(int N, int k, double p) {
+		StdOut.println(N + " " + k);
+		if (N == 0 && k == 0) return 1.0;
+		if (N < 0 || k < 0) return 0.0;
+		return (1.0 - p) * binomial(N -1, k, p) + p * binomial(N - 1, k - 1, p);
+	}
+	
+	public static void exercise_1_1_30() {
+		fillArrayLogic(new boolean[10][10]);
+		
+	}
+	
+	public static void fillArrayLogic(boolean[][] a) {
+		for (int k = 0; k < 10; k++) {
+			for (int m = 0; m < 10; m++) {
+				a[k][m] = isVprime(k, m);
+				StdOut.printf("%-10s | %-10s | %-10s \n", k, m , a[k][m]);
+			}
+		}
+	}
+    public static boolean isVprime(int m, int n) {
+    	return (gcd(n,m)==1);
+    }
 }
 
 
